@@ -37,6 +37,32 @@ def owe(names, transaction_record):
             f"{person1} owes {person2} by Rs.{0 if int(difference) == 0 else difference} \n{person2} owes {person1} Rs.0." if difference > 0 else f"{person2} owes {person1} by Rs.{0 if int(difference) == 0 else abs(difference)} \n{person1} owes {person2} Rs.0.")
 
 
+def payback(names, transaction_record):
+    if not transaction_record:
+        print("No transactions were made so far.")
+    else:
+        person1 = input("Enter the name of the first person: ")
+        while person1 not in names:
+            print("Please enter a valid name😡😡😡")
+            person1 = input("Enter the name of the first person: ")
+        person2 = input("Enter the name of the other person: ")
+        while person2 not in names:
+            print("Please enter a valid name😡😡😡")
+            person2 = input("Enter the name of the other person: ")
+        payment_type = input("Enter 'Full' for full payment and 'Partial' for partial payment: ").lower()
+        while payment_type != "full" and payment_type != "partial":
+            print("Please enter a valid keyword😡😡😡")
+            payment_type = input("Enter 'Full' for full payment and 'Partial' for partial payment: ").lower()
+        if payment_type == "full":
+            transaction_record[person1+"->"+person2] = 0
+        elif payment_type == "partial":
+            amount = input(f"Enter the amount you want to pay {person2}: ")
+            while amount.isalpha() or float(amount) < 1:
+                print("Please enter a valid amount😡😡😡")
+                amount = input(f"Enter the amount you want to pay {person2}: ")
+            transaction_record[person1+"->"+person2] -= float(amount)
+
+
 def instructions():
     print("Here are the instructions on how to use this particular program")
     print("Type 'Pay' to indicate that Person 1 is paying the bill for everyone.")
