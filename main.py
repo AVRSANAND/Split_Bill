@@ -67,8 +67,9 @@ def instructions():
     print("Here are the instructions on how to use this particular program")
     print("Type 'Pay' to indicate that Person 1 is paying the bill for everyone.")
     print("Type 'Owe' to know how much Person 1 owes Person 2")
-    print(
-        "Type 'Payback' to indicate that Person 1 is paying back Person 2. In this feature, you can either pay the full amount or a partial amount. So, type 'Full' for full payment and 'Partial' for partial payment.")
+    print("Type 'Payback' to indicate that Person 1 is paying back Person 2. "
+          "In this feature, you can either pay the full amount or a partial amount. "
+          "So, type 'Full' for full payment and 'Partial' for partial payment.")
     print("Type 'Quit' to indicate that there were no transactions made further.")
 
 
@@ -89,13 +90,13 @@ def main():
 
         match action:
             case "pay":
-                pay()
+                pay(names, transaction_record, number)
 
             case "owe":
-                owe()
+                owe(names, transaction_record)
 
             case "payback":
-                payback()
+                payback(names, transaction_record)
 
             case "quit":
                 flag = False
